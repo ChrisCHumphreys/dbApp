@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.OleDb;
 
 namespace dbApp
 {
@@ -20,9 +21,27 @@ namespace dbApp
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        OleDbConnection cn;
+
         public MainWindow()
         {
             InitializeComponent();
+            cn = new OleDbConnection("EmployeeDBConnectionString");
+        }
+
+        private void assetButton_Click(object sender, RoutedEventArgs e)
+        {
+            string query = "select* from Assets";
+            OleDbCommand cmd = new OleDbCommand(query, cn);
+            cn.Open();
+            OleDbDataReader read = cmd.ExecuteReader();
+            string data = "";
+            while (read.Read())
+            {
+                data += read[0].ToString() + "\n";
+
+            }
         }
     }
 }
