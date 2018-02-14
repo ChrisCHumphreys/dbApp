@@ -40,10 +40,8 @@ namespace dbApp
             data += "Emplyee ID --> Asset --> Value\n";
             while (read.Read())
             {
-                
                 data += read[0].ToString() + " --> " + read[1].ToString() + " --> " + read[2].ToString() + "\n";
                 AssetBox.Text = data;
-        
             }
             data = "";
             cn.Close();
@@ -52,6 +50,22 @@ namespace dbApp
         private void AssetBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             //AssetBox.Text = data;
+        }
+
+        private void EmployeeButton_Click(object sender, RoutedEventArgs e)
+        {
+            string query = "select* from Employees";
+            OleDbCommand cmd = new OleDbCommand(query, cn);
+            cn.Open();
+            OleDbDataReader read = cmd.ExecuteReader();
+            data += "Emplyee ID --> First Name --> Last Name\n";
+            while (read.Read())
+            {
+                data += read[0].ToString() + " --> " + read[1].ToString() + " --> " + read[2].ToString() + "\n";
+                AssetBox.Text = data;
+            }
+            data = "";
+            cn.Close();
         }
     }
 }
