@@ -21,13 +21,14 @@ namespace dbApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        string data = "";
 
         OleDbConnection cn;
 
         public MainWindow()
         {
             InitializeComponent();
-            cn = new OleDbConnection("EmployeeDBConnectionString");
+            cn = new OleDbConnection("Provider = Microsoft.ACE.OLEDB.12.0; Data Source = C:\\Users\\chrchump\\Desktop\\DatabaseCW\\dbApp\\dbApp\\EmployeeDB.accdb");
         }
 
         private void assetButton_Click(object sender, RoutedEventArgs e)
@@ -36,17 +37,16 @@ namespace dbApp
             OleDbCommand cmd = new OleDbCommand(query, cn);
             cn.Open();
             OleDbDataReader read = cmd.ExecuteReader();
-            string data = "";
             while (read.Read())
             {
                 data += read[0].ToString() + "\n";
 
             }
         }
-
         private void assetTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            assetTextBox.Text = data;
         }
+
     }
 }
