@@ -39,14 +39,17 @@ namespace dbApp
             OleDbDataReader read = cmd.ExecuteReader();
             while (read.Read())
             {
-                data += read[0].ToString() + "\n";
-
+                data += read[1].ToString() + " --> " + read[2].ToString() + "\n";
+                AssetBox.Text = data;
+        
             }
-        }
-        private void assetTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            assetTextBox.Text = data;
+            data = "";
+            cn.Close();
         }
 
+        private void AssetBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //AssetBox.Text = data;
+        }
     }
 }
