@@ -43,5 +43,10 @@ namespace dbApp
 
             }
         }
+
+        private void assetTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
