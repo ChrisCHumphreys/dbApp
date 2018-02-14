@@ -37,9 +37,11 @@ namespace dbApp
             OleDbCommand cmd = new OleDbCommand(query, cn);
             cn.Open();
             OleDbDataReader read = cmd.ExecuteReader();
+            data += "Emplyee ID --> Asset --> Value\n";
             while (read.Read())
             {
-                data += read[1].ToString() + " --> " + read[2].ToString() + "\n";
+                
+                data += read[0].ToString() + " --> " + read[1].ToString() + " --> " + read[2].ToString() + "\n";
                 AssetBox.Text = data;
         
             }
