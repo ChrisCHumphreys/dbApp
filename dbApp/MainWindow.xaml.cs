@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ * Name: Chris Humphreys
+ * Date: 02/14/18
+ * File: MainWindow.xaml.cs
+ * Description:  Main driver and all logic for db classwork program.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,6 +42,7 @@ namespace dbApp
             cn = new OleDbConnection("Provider = Microsoft.ACE.OLEDB.12.0; Data Source = EmployeeDB.accdb");
         }
 
+        // code for logic and database retreival when asset button is clicked.
         private void assetButton_Click(object sender, RoutedEventArgs e)
         {
             string query = "select* from Assets";
@@ -51,11 +59,13 @@ namespace dbApp
             cn.Close();
         }
 
+        // Function to provide access to text box
         private void AssetBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             //AssetBox.Text = data;
-        }
+        }  
 
+        // code for logic and database retreival when asset button is clicked.
         private void EmployeeButton_Click(object sender, RoutedEventArgs e)
         {
             string query = "select* from Employees";
