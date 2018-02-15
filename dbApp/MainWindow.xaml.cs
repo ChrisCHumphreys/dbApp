@@ -28,7 +28,11 @@ namespace dbApp
         public MainWindow()
         {
             InitializeComponent();
-            cn = new OleDbConnection("Provider = Microsoft.ACE.OLEDB.12.0; Data Source = C:\\Users\\chrchump\\Desktop\\DatabaseCW\\dbApp\\dbApp\\EmployeeDB.accdb");
+
+            // Absolute file paths for different computers.  One being used now is relative. 
+            // C: \Users\geoch\source\repos\dbApp\dbApp\EmployeeDB.accdb
+            // C:\\Users\\chrchump\\Desktop\\DatabaseCW\\dbApp\\dbApp\\
+            cn = new OleDbConnection("Provider = Microsoft.ACE.OLEDB.12.0; Data Source = EmployeeDB.accdb");
         }
 
         private void assetButton_Click(object sender, RoutedEventArgs e)
